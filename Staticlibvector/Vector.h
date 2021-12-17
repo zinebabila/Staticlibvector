@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <assert.h>
+#define N 100
 using namespace std;
 
 
@@ -9,9 +10,10 @@ namespace geometrie {
 	class Vector
 	{
 	private:
-		t vect[3];
+		t vect[N];
+        int taille;
 	public:
-		Vector(t a = 0.0, t b = 0.0, t c = 0.0);
+		Vector();
 		//imposible d'utiliser cette methode et meme le constructeur de recopie par defaut
 		Vector(const Vector&) = delete;
 		Vector& operator=(const Vector) = delete;
@@ -20,6 +22,7 @@ namespace geometrie {
 		bool operator==(const Vector& v);
 		bool operator!=(const Vector& v) ;
 		t& operator[](unsigned int indice);
+        void push(t a);
 		
 
 
@@ -29,16 +32,15 @@ namespace geometrie {
 
 };
 template<class t>
-geometrie::Vector<t>::Vector(t a, t b, t c)
+geometrie::Vector<t>::Vector()
 {
-    this->vect[0] = a;
-    this->vect[1] = b;
-    this->vect[2] = c;
+    
+    this->taille = 0;
 }
 template<class t>
 void geometrie::Vector<t>::print() 
 {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < this->taille; i++) {
         cout << "vecteur[" << i << "]=" << this->at(i) << endl;
     }
 }
@@ -88,6 +90,13 @@ t& geometrie::Vector<t>::operator[](unsigned int indice)
     catch (char* e) {
         cout << e << endl;
     }
+}
+
+template<class t>
+ void geometrie::Vector<t>::push(t a)
+{
+     this->vect[this->taille] = a;
+     this->taille++;
 }
 
 

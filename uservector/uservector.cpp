@@ -8,11 +8,11 @@ using namespace geometrie;
 using namespace std;
 int main()
 {
-    Vector<int> v(2, 3, 4);
-     v.print() ;
-     v[1] = 9;
-     v.print();
-     cout << v.at(2) << endl;
+    Vector<string> *v=new Vector<string>();
+     v->push ( "fatiha");
+     v->push("houda");
+     v->print();
+     
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
